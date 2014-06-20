@@ -7,9 +7,9 @@ class TopicsController < ApplicationController
     def create
 
         @topic = Topic.new(topic_params)
-       # @topic.user_id(current_user.id)
-        puts @topic.title
-        @topic.user_id=current_user.id
+        @topic.user=current_user
+        #puts @topic.title
+        #@topic.user_id=current_user.id
         if @topic.save
             flash[:notice] = "You created a topic"
             flash[:color] = "valid"
@@ -30,10 +30,7 @@ class TopicsController < ApplicationController
     
     def destroy
         @topic = Topic.find(params[:id])
-        @topic.destroy if @topic.user.id == current_user.id or admin_signed_in?
-
-        
- 
+        @topic.destroy if @topic.user== current_user or admin_signed_in?
         redirect_to topics_path
     end
 
