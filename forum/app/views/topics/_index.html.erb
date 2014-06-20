@@ -1,0 +1,10 @@
+<%@topics.each do |topic| %>
+  <tr>
+    <td><%= topic.title %></td>
+    <td><%= topic.text %></td>
+    <td><%= topic.user.nick %></td>
+    <td><%= topic.created_at %></td>
+   <td></td>
+    <td><td><%= link_to "Delete", topic_delete_path(topic), remote: true, class: "btn btn-danger" %></td></td> 
+  </tr>
+<% end %>
