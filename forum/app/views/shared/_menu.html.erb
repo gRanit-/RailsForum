@@ -5,8 +5,14 @@
       <ul class="nav navbar-nav">
         <li class="active"><a class="btn "href="message.html"><span class="glyphicon glyphicon-envelope"> <span class="badge">1</span></span></a></li>
         <% if user_signed_in? %>
-        <li><a href="../topics/new">Add Topic</a></li>
-        <li><a href="../post/new">Add Post</a></li>
+        <li><%= link_to "View Topics", topics_path, remote: false%></li>
+        <% if current_page?(:controller => 'topics', :action => 'index')%>
+            <li><%= link_to "New Topic", new_topic_path, remote: true%></li>
+        <%else%>
+        <% if current_page?(:controller => 'topics', :action => 'show')%>
+            <li><%= link_to "New Post", new_topic_post_path(@topic), remote: true %></li>
+        <%end%>
+        <%end%>
         <li><%=link_to "Sign Out", destroy_user_session_path, :method => :delete%></li>
         <%else%>
         <li><%=link_to "Sign In", new_user_session_path, :method => :get%></li>
