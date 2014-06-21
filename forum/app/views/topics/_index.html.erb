@@ -21,8 +21,8 @@ word-wrap: break-word;
 word-break: break-all;
 white-space: normal;
 ">
-        <% if topic.text.mb_chars.length >= 200%>
-             <p><%=topic.text.slice(0,200)+"..."%><%= link_to "Show Description", topic_showDescription_path(topic), remote: true %></p>
+        <% if topic.text.mb_chars.length >= 300%>
+             <p><%=topic.text.slice(0,300)+"..."%><%= link_to "Show Description", topic_showDescription_path(topic), remote: true %></p>
             <%else%>
             <p><%=topic.text%></p></td>        
         <%end%>

@@ -10,5 +10,5 @@ Are you sure you wish to delete post written on <b><%= @post.created_at %></b>
 </div>
 <div class="modal-footer">
   <%= link_to "Yes, Delete This Post", post_path(@post), method: :delete, remote: true, class: "btn btn-danger" %>
-  <%= link_to "No, Please Don't", "#", class: "btn", data: { dismiss: "modal" } %>
+  <%= link_to "No, Please Don't", "#", class: "btn btn-success", data: { dismiss: "modal" } %>
 </div>

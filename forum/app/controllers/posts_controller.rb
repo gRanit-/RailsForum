@@ -41,7 +41,7 @@ class PostsController < ApplicationController
     def destroy
         @post = Post.find(params[:id])
         @topic=Topic.find(@post.topic.id)
-        @post.destroy if @post.user== current_user or current_user.admin
+        @post.destroy if @post.user == current_user or current_user.admin
 
         
     end

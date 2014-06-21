@@ -15,9 +15,6 @@ class TopicsController < ApplicationController
         @topics=Topic.all
         @topic = Topic.new(topic_params)
         @topic.user=current_user
-        @topic.save
-        '''@topic = Topic.new(topic_params)
-        
         if @topic.save
             flash[:notice] = "You created a topic"
             flash[:color] = "valid"
@@ -25,7 +22,7 @@ class TopicsController < ApplicationController
             flash[:notice] = "Form is invalid"
             flash[:color] = "invalid"
         end
-        redirect_to @topic'''
+ 
     end
     
     def show
@@ -45,7 +42,7 @@ class TopicsController < ApplicationController
     def destroy
         @topics=Topic.all
         @topic = Topic.find(params[:id])
-        @topic.destroy if @topic.user== current_user or current_user.admin
+        @topic.destroy if @topic.user == current_user or current_user.admin
         
     end
 
