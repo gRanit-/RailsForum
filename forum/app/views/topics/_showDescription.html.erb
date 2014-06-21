@@ -1,0 +1,22 @@
+
+<p>
+  <strong>Topic title:</strong>
+  <%= @topic.title %>
+</p>
+ 
+<p>
+  <strong>Text:</strong>
+  <body><%= @topic.text %></body>
+</p>
+
+<p>
+  <strong>User:</strong>
+ <%= link_to @topic.user.nick,user_path(@topic.user),remote: false %>
+</p>
+
+<p>
+  <strong>Created:</strong>
+  <%= @topic.created_at %>
+</p>
+
+<%= link_to "Cancel", "#", data:{dismiss: "modal"},class: "btn btn-danger" %>

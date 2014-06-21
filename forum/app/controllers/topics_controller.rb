@@ -6,6 +6,11 @@ class TopicsController < ApplicationController
         @topic=Topic.new
     end
 
+  def user_topics
+    @user=User.find(params[:id])
+    @topics=@user.topics
+    render "topics/index"
+  end
     def create
         @topics=Topic.all
         @topic = Topic.new(topic_params)
@@ -25,10 +30,13 @@ class TopicsController < ApplicationController
     
     def show
         @topic = Topic.find(params[:id])   
-    end
-    
+    end   
+
     def index
         @topics=Topic.all
+    end
+    def showDescription
+        @topic =Topic.find(params[:topic_id])
     end
     def delete
         @topics=Topic.all

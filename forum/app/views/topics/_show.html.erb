@@ -4,16 +4,18 @@
 <%@topic.posts.each do |post| %>
 <thead>
 <tr>
-       <th> <p><%=post.user.nick%></p></th>
+       <th> <p><%= link_to post.user.nick,user_path(post.user),remote: false %></p></th>
 
   
 <th> <p><%=post.created_at%></p></th>
 
-
-
-
-
-    <th><%= link_to "Delete", post_delete_path(post), remote: true, class: "btn btn-danger" %></th>
+    <th>
+    <% if current_user==post.user or current_user.admin %>
+        <%= link_to "Delete", post_delete_path(post), remote: true, class: "btn btn-danger" %>
+    <%else%>
+        &nbsp;
+     <%end%>   
+    </th>
 </tr>
 </thead>
 <tbody>

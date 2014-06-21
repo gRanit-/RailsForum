@@ -1,0 +1,12 @@
+<%= render "shared/menu" %>
+<div class="container">
+User <%=@user.nick%>
+<%= link_to "Show Topics", user_topics_path(@user), remote: false, class:"btn btn-primary"%>
+<%= link_to "Show Posts", user_posts_path(@user), remote: false, class:"btn btn-primary"%>
+</div>
+<div id="user-modal" class="modal fade">
+  <div class="modal-dialog">
+    <div id="inner-user-modal" class="modal-content">
+    </div>
+  </div>
+</div>

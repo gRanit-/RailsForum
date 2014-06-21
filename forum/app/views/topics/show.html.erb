@@ -3,7 +3,7 @@
 <div class="container">
 <div class="">
     
-    Topic: <%=@topic.title%>
+    <h3><%=@topic.title%></h3><h4><%= link_to "Show Description", topic_showDescription_path(@topic), remote: true %></h4>
   </div>
   <div class="new-post"></div>
   
@@ -14,7 +14,18 @@
 
 <div id="post-modal" class="modal fade">
   <div class="modal-dialog">
-    <div id="inner-post-modal" class="modal-content">
+   <div class="modal-content">
+    <div id="inner-post-modal" class="modal-body">
+    </div>
+    </div>
+  </div>
+</div>
+
+<div id="topic-modal" class="modal fade">
+  <div class="modal-dialog">
+  <div class="modal-content">
+    <div id="inner-topic-modal" class="modal-body">
+    </div>
     </div>
   </div>
 </div>

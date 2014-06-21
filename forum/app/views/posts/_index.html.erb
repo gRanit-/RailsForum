@@ -1,10 +1,31 @@
-<%@topics.each do |topic| %>
+<%@posts.each do |post| %>
   <tr>
-    <td><%= topic.title %></td>
-    <td><%= topic.text %></td>
-    <td><%= topic.user.nick %></td>
-    <td><%= topic.created_at %></td>
-   <td></td>
-    <td><td><%= link_to "Delete", topic_delete_path(topic), remote: true, class: "btn btn-danger" %></td></td> 
+    <td><%= post.title %></td>
+    <td> <%= link_to post.user.nick,user_path(post.user),remote: false %></td>
+    <td><%= post.created_at %></td>
+    <td></td>
+      <td><% if current_user==post.user or current_user.admin %>
+        <%= link_to "Delete", post_delete_path(post), remote: true, class: "btn btn-danger" %>
+    <%else%>
+        &nbsp;
+     <%end%> 
+     </td>
   </tr>
+<tr> 
+  <td colspan="5" style="
+white-space: -moz-pre-wrap !important; 
+white-space: -pre-wrap;      
+white-space: -o-pre-wrap;   
+white-space: pre-wrap;       
+word-wrap: break-word;       
+word-break: break-all;
+white-space: normal;
+">
+        <% if post.text.mb_chars.length >= 1000%>
+             <p><%=post.text.slice(0,1000)+"..."%><%= link_to "Show Full Post", post_path(post), remote: true %></p>
+            <%else%>
+            <p><%=post.text%></p></td>        
+        <%end%>
+  </td>
+</tr>
 <% end %>

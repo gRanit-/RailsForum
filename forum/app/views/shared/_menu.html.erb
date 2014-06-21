@@ -1,39 +1,40 @@
-<nav class="nav nav-justified" role="navigation">
+<nav class="nav nav-justified" role="navigation" style="position:fixed; background-color:rgba(255,255,255,0.96);
+-webkit-box-shadow: 0 1px 3px rgba(0,0,0,.25); // iOS <4.3 & Android <4.1
+          box-shadow:0 1px 3px rgba(0,0,0,.25);
+
+
+">
   
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a class="btn "href="message.html"><span class="glyphicon glyphicon-envelope"> <span class="badge">1</span></span></a></li>
+       
         <% if user_signed_in? %>
+        <li><%= link_to "Signed in as "+current_user.nick, user_path(current_user), remote: false%></li>
         <li><%= link_to "View Topics", topics_path, remote: false%></li>
-        <% if current_page?(:controller => 'topics', :action => 'index')%>
-            <li><%= link_to "New Topic", new_topic_path, remote: true%></li>
-        <%else%>
-        <% if current_page?(:controller => 'topics', :action => 'show')%>
-            <li><%= link_to "New Post", new_topic_post_path(@topic), remote: true %></li>
-        <%end%>
-        <%end%>
+        <% if current_page?(topics_path) or current_page?('/')%>
+           
+                <li><%= link_to "New Topic", new_topic_path, remote: true%></li>
+            <%else%>
+            <% if current_page?(:controller => 'topics',:action => 'show')%>
+                <li><%= link_to "New Post", new_topic_post_path(@topic), remote: true %></li>
+            <%end%>
+   
+         <%end%>
+
         <li><%=link_to "Sign Out", destroy_user_session_path, :method => :delete%></li>
         <%else%>
         <li><%=link_to "Sign In", new_user_session_path, :method => :get%></li>
         <li><%=link_to "Sign Up", new_user_registration_path, :method => :get%></li>
         <% end %>
        
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
-          </ul>
-        </li>
+        
       </ul>
  
       
     </div><!-- /.navbar-collapse -->
 
 </nav>
+<br>
+<br>
+<br>

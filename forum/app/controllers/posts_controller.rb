@@ -20,6 +20,15 @@ class PostsController < ApplicationController
         end
       
     end
+
+  def user_posts
+    @user=User.find(params[:id])
+    @posts=@user.posts
+    
+    render "index"
+  end  
+
+    
     def index
         @posts=Post.all
     end

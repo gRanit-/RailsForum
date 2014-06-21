@@ -1,22 +1,28 @@
 Rails.application.routes.draw do
 
   get 'welcome/index'
+  get 'topics/index'
 
-  devise_for :users
+  devise_for :users 
+  
+  get 'users/:id' =>'users#show', as: :user
+  get 'users/:id/topics' =>'topics#user_topics', as: :user_topics
+  get 'users/:id/posts' =>'posts#user_posts', as: :user_posts
+
   resources :posts do
     get "delete"
-
-
   end
   resources :topics do
+    get "showDescription" =>"topics#showDescription"
     get "delete"
      resource 'post'
+
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-   root 'welcome#index'
+   root 'topics#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

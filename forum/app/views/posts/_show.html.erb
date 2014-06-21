@@ -1,5 +1,5 @@
 <p>
-  <strong>Title:</strong>
+  <strong>Topic title:</strong>
   <%= @post.topic.title %>
 </p>
  
@@ -10,7 +10,7 @@
 
 <p>
   <strong>User:</strong>
-  <%= @post.user.nick %>
+  <%= link_to @post.user.nick,user_path(@post.user),remote: false %>
 </p>
 <p>
   <strong>Created:</strong>
