@@ -1,0 +1,41 @@
+
+<table class="table table-condensed table-bordered table-striped">
+
+<%@topic.posts.each do |post| %>
+<thead>
+<tr>
+       <th> <p><%=post.user.nick%></p></th>
+
+  
+<th> <p><%=post.created_at%></p></th>
+
+
+
+
+
+    <th><%= link_to "Delete", post_delete_path(post), remote: true, class: "btn btn-danger" %></th>
+</tr>
+</thead>
+<tbody>
+<tr><td colspan="3" style="
+white-space: -moz-pre-wrap !important; 
+white-space: -pre-wrap;      
+white-space: -o-pre-wrap;   
+white-space: pre-wrap;       
+word-wrap: break-word;       
+word-break: break-all;
+white-space: normal;
+">
+  <% if post.text.mb_chars.length >= 1000%>
+    <p><%=post.text.slice(0,1000)+"..."%></p>
+    <%=link_to "View full post", post_path(post),remote:true%>
+<%else%>
+   <p><%=post.text%></p></td>        
+<%end%>
+</td></tr>
+</tbody>
+<% end %>
+<% if @topic.posts.empty? %>
+  There are no posts in the current topic.
+  <%end%>
+  </table>

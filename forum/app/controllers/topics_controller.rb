@@ -1,6 +1,7 @@
 class TopicsController < ApplicationController
     before_action :authenticate_user!
     respond_to :html, :js
+    
     def new
         @topic=Topic.new
     end
@@ -23,19 +24,22 @@ class TopicsController < ApplicationController
     end
     
     def show
-        @topic = Topic.find(params[:topic_id])
+        @topic = Topic.find(params[:id])
+        
     end
     
     def index
         @topics=Topic.all
     end
     def delete
+        @topics=Topic.all
         @topic = Topic.find(params[:topic_id])
     end
     def destroy
+        @topics=Topic.all
         @topic = Topic.find(params[:id])
         @topic.destroy if @topic.user== current_user or current_user.admin
-        @topics=Topic.all
+        
     end
 
     private

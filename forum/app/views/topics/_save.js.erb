@@ -4,6 +4,7 @@ $("ul.errors").html("")
     $("ul.errors").append($("<li />").html("<%= message.html_safe %>"))
   <% end %>
 <% else %>
-  $(".topic-index").html("<%= escape_javascript(render 'index') %>")
-  $("#inner-topic-modal").modal("fade")
+  $("#topic-index").html("<%= escape_javascript(render 'index') %>")
+  $("#topic-modal").modal("hide")
+
 <% end %>

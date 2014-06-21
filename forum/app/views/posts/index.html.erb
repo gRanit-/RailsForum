@@ -1,12 +1,10 @@
-<%= render "shared/menu" %>
-
 <div class="container">
   <div class="">
     <%= link_to "New Topic", new_topic_path, remote: true, class: "btn btn-primary" %>
   </div>
   <div class="new-topic"></div>
   
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-striped">
     <thead>
       <tr>
         <th>Title</th>
@@ -17,7 +15,7 @@
         <td>&nbsp;</td>
       </tr>
     </thead>
-    <tbody id="topic-index">
+    <tbody class="topic-index">
       <%= render "index" %>
     </tbody>
   </table>

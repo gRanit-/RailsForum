@@ -1,10 +1,26 @@
 <%@topics.each do |topic| %>
   <tr>
     <td><%= topic.title %></td>
-    <td><%= topic.text %></td>
     <td><%= topic.user.nick %></td>
     <td><%= topic.created_at %></td>
-   <td></td>
-    <td><td><%= link_to "Delete", topic_delete_path(topic), remote: true, class: "btn btn-danger" %></td></td> 
+    <td><%= link_to "View", topic_path(topic), remote: false, class: "btn btn-danger" %></td>
+    <td><%= link_to "Delete", topic_delete_path(topic), remote: true, class: "btn btn-danger" %></td>
   </tr>
+<tr> 
+  <td colspan="5" style="
+white-space: -moz-pre-wrap !important; 
+white-space: -pre-wrap;      
+white-space: -o-pre-wrap;   
+white-space: pre-wrap;       
+word-wrap: break-word;       
+word-break: break-all;
+white-space: normal;
+">
+        <% if topic.text.mb_chars.length >= 200%>
+             <p><%=topic.text.slice(0,200)+"..."%></p>
+            <%else%>
+            <p><%=topic.text%></p></td>        
+        <%end%>
+  </td>
+</tr>
 <% end %>
