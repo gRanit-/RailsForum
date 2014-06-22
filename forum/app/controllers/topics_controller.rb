@@ -11,6 +11,7 @@ class TopicsController < ApplicationController
     @topics=@user.topics
     render "topics/index"
   end
+  
     def create
         @topics=Topic.all
         @topic = Topic.new(topic_params)

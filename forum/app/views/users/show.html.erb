@@ -1,23 +1,19 @@
 <%= render "shared/menu" %>
 <div class="container">
-<div class="panel panel-default">
-  <div class="panel-body">
-    <p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-  </div>
+<div class="page-header"> <h2><%=@user.nick%>'s info</h2></div>
+
+ 
 
   <ul class="list-group">
     <li class="list-group-item">User: <%=@user.nick%></li>
+    <li class="list-group-item">Admin: <%=@user.admin%></li>
     <li class="list-group-item">Created at: <%=@user.created_at%></li>
     <li class="list-group-item">Last signed in at: <%=@user.last_sign_in_at%></li>
     <li class="list-group-item">Posts amount: <%=@user.posts.size%></li>
     <li class="list-group-item">Topics amount: <%=@user.topics.size%></li>
 
   </ul>
-</div>
+
 
 <%= link_to "Show Topics", user_topics_path(@user), remote: false, class:"btn btn-primary"%>
 <%= link_to "Show Posts", user_posts_path(@user), remote: false, class:"btn btn-primary"%>

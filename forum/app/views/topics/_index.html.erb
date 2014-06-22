@@ -1,9 +1,9 @@
 <%@topics.each do |topic| %>
   <tr>
-    <td><%= topic.title %></td>
-    <td><%= link_to topic.user.nick,user_path(topic.user),remote: false %></td>
-    <td><%= topic.created_at %></td>
-    <td><%= link_to "View", topic_path(topic), remote: false, class: "btn btn-danger" %></td>
+    <th><%= topic.title %></th>
+    <th><%= link_to topic.user.nick,user_path(topic.user),remote: false %></th>
+    <th><%= topic.created_at %></th>
+    <td><%= link_to "View", topic_path(topic), remote: false, class: "btn btn-danger" %>
       <td><% if current_user==topic.user or current_user.admin %>
         <%= link_to "Delete", topic_delete_path(topic), remote: true, class: "btn btn-danger" %>
     <%else%>
@@ -11,7 +11,7 @@
      <%end%> 
      </td>
   </tr>
-<tr> 
+<tr class="" style="background-color:rgb(249,249,249);"> 
   <td colspan="5" style="
 white-space: -moz-pre-wrap !important; 
 white-space: -pre-wrap;      
@@ -26,6 +26,7 @@ white-space: normal;
             <%else%>
             <p><%=topic.text%></p></td>        
         <%end%>
+       
   </td>
 </tr>
 <% end %>
